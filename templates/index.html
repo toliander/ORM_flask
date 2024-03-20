@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+    <title>Миссия колонизации Марса</title>
+</head>
+<body>
+<div class="alert alert-dark">
+    <h1 class="text-dark" style="text-align: left;">Миссия колонизации Марса </h1>
+    <h3 class="text-dark" style="text-align: right;">Mars one</h3>
+</div>
+<h1 style="color: gray;">И на Марсе будут яблони цвести ! </h1>
+<h1 style="color: black; text-align: center;"> Размещение по каютам </h1>
+{% set user_list = captains %}
+{% for user in user_list %}
+    {% if loop.index0 == 0 %}
+        <h3 style="color: black; text-align: left; margin-left: 100px;">{{ user }} - Каюта № {{ loop.index }} - капитан корабля</h3>
+    {% else %}
+        <h3 style="color: black; text-align: left; margin-left: 100px;">{{ user }} - Каюта № {{ loop.index }}</h3>
+    {% endif %}
+{% endfor %}
+</body>
+</html>
