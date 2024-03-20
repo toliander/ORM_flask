@@ -1,34 +1,15 @@
-import random
-from flask import Flask, render_template
+from flask import Flask
+from data import db_session
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
-def cap():
-    # Списки имен и фамилий для капитанов
-    first_names = ["James", "John", "William", "Henry", "Christopher", "Thomas", "Richard", "Charles", "Daniel",
-                   "Robert"]
-    last_names = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"]
+def main():
+    db_session.global_init("blogs.db")
 
-    # Генерация списка капитанов
-    captains = []
-    for _ in range(5):
-        first_name = random.choice(first_names)
-        last_name = random.choice(last_names)
-        captain = f"{first_name} {last_name}"
-        captains.append(captain)
-
-    return captains
-
-
-@app.route('/')
-@app.route('/distribution')
-def index():
-    captains = cap()
-    return render_template('index.html', captains=captains)
+    app.run()
 
 
 if __name__ == '__main__':
-    app.run(port=8080, host='127.0.0.1')
-
-
+    main()
